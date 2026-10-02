@@ -1,0 +1,11 @@
+# Runtime parameters — loaded separately from config/agent.yaml (the static
+# discovery manifest) and passed to the graph as Graph(config=...).
+max_retry: 3
+timeout_seconds: 30
+
+# Scheduling records are supplied to the graph by the deploying environment through
+# `scheduling_connector`; this agent never carries its own roster data. The shared STG
+# smoke check provisions no such source, so the compliance step correctly reports that
+# no scheduling data is available rather than producing a report from nothing. That
+# fail-closed result is the expected STG outcome for a valid store query.
+stg_expected_status: "error"
